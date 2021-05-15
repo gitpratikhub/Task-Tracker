@@ -22,7 +22,7 @@ function App() {
  
   //fetching data
   const fetchtasks = async ()=>{
-    const res = await fetch('http://localhost:5000/tasks')
+    const res = await fetch('https://fjson-server-app.herokuapp.com/tasks')
     const data = await res.json()
     //console.log(data)
     return data
@@ -30,7 +30,7 @@ function App() {
 
     //fetching singular data for reminder
     const fetchtask = async (id)=>{
-      const res = await fetch(`http://localhost:5000/tasks/${id}`)
+      const res = await fetch(`https://fjson-server-app.herokuapp.com/tasks/${id}`)
       const data = await res.json()
       //console.log(data)
       return data
@@ -38,7 +38,7 @@ function App() {
 
 //adding task
 const addTask = async (task) => {
-  const res = await fetch('http://localhost:5000/tasks', {
+  const res = await fetch('https://fjson-server-app.herokuapp.com/tasks', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -54,7 +54,7 @@ const addTask = async (task) => {
 
   //deleting task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`,{method : 'DELETE'})
+    await fetch(`https://fjson-server-app.herokuapp.com/tasks/${id}`,{method : 'DELETE'})
     
     setTasks(tasks.filter((task)=> task.id !==id))
   }
@@ -64,7 +64,7 @@ const addTask = async (task) => {
     const chngetogle = await fetchtask(id)
     const updatetask = {...chngetogle, reminder:!chngetogle.reminder}
     
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+    const res = await fetch(`https://fjson-server-app.herokuapp.com/tasks/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',
